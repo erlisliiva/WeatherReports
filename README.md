@@ -1,0 +1,5 @@
+# WeatherReports
+___________________________________________________________________________________
+Weather reading Application from openweathermap.com
+
+Created for testing purposes.
