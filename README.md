@@ -1,5 +1,5 @@
 # WeatherReports
 ___________________________________________________________________________________
-Weather reading Application from openweathermap.com
+Weather reading Application from openweathermap api.
 
 Created for testing purposes.
