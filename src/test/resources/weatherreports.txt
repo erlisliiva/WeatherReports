@@ -1,0 +1,19 @@
+[ {
+  "cod" : "200",
+  "message" : 1,
+  "cnt" : 2,
+  "list" : null,
+  "city" : {
+    "id" : null,
+    "name" : "Tallinn",
+    "coord" : {
+      "lon" : 20.0,
+      "lat" : 10.0
+    },
+    "country" : null,
+    "population" : null,
+    "timezone" : null,
+    "sunrise" : null,
+    "sunset" : null
+  }
+} ]

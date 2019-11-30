@@ -3,22 +3,25 @@ package com.erlis.weather.service;
 import com.erlis.weather.client.RestClient;
 import com.erlis.weather.controller.ApiController;
 import com.erlis.weather.dto.api.*;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class WeatherApiServiceTest {
+class ApiControllerIntegrationTest {
 
     @SpyBean
     private RestClient restClient;
@@ -29,21 +32,18 @@ class WeatherApiServiceTest {
     @Autowired
     private FileService fileService;
 
-//    private static final String fileName = "testfile.txt";
-//    private static final String TEST_FILE_PATH = "C:\\Users\\Erlis\\IdeaProjects\\weatherApp\\weather\\src\\main\\resources\\";
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    private static final String fileName = "weatherreports.txt";
+    private static final String TEST_FILE_PATH = "C:\\Users\\Erlis\\IdeaProjects\\weatherApp\\weather\\src\\test\\resources\\";
 
     @Test
     void countOfCitiesToWriteInFile() {
-//        Mockito.doReturn(getMockObject()).when(restClient).getWeatherReportByCity(any());
+        Mockito.doReturn(getMockObject()).when(restClient).getWeatherReportByCity(any());
         List<ApiResultDto> results = apiController.getResult();
         assertNotNull(results);
         assertEquals(3, results.size());
-    }
-
-    @Test
-    void test(){
-        ApiResultDto weatherReportByCity = Mockito.doReturn(getMockObject()).when(restClient).getWeatherReportByCity(any());
-        assertNotNull(weatherReportByCity);
     }
 
     @Test
@@ -65,31 +65,36 @@ class WeatherApiServiceTest {
     }
 
 
-//    @Test
-//    void writeToFileIsWriting() {
-//
-//        List<ApiResultDto> results = apiController.getResult();
-//        assertNotNull(results);
-//        File testFile = new File(TEST_FILE_PATH + fileName);
-//        assertTrue(testFile.exists());
-//        assertEquals(0, testFile.length());
-//        fileService.writeToFile(results, fileName);
-//        assertTrue(testFile.length() != 0);
-//        emptyOutATxtFile(testFile);
-//        assertEquals(0, testFile.length());
-//
-//    }
+    @Test
+    void writeToFileIsWriting() throws IOException {
+
+        Mockito.doReturn(getMockObject()).when(restClient).getWeatherReportByCity(any());
+        List<ApiResultDto> results = apiController.getResult();
+        assertNotNull(results);
+        File testFile = new File(TEST_FILE_PATH + fileName);
+        assertTrue(testFile.exists());
+        assertTrue(testFile.length() != 0);
+        List<String> elements = fileService.readFromFile(fileName);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String s : elements) {
+            stringBuilder.append(s);
+        }
+        List<ApiResultDto> apiResultDtos = objectMapper.readValue(stringBuilder.toString(), new TypeReference<>() {
+        });
+        assertEquals(results.get(0), apiResultDtos.get(0));
+        emptyOutATxtFile(testFile);
+        assertEquals(0, testFile.length());
+
+    }
 
     @Test
-    void readFromFileIsReading(){
-
-//        try {
-//            List<String> cities = fileService.readFromFile("citynames.txt");
-//            assertNotNull(cities);
-//            assertEquals(1, cities.size());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    void readFromFileIsReading() {
+        try {
+            List<String> cities = fileService.readFromFile("citynames.txt");
+            assertNotNull(cities);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private ApiResultDto getMockObject() {

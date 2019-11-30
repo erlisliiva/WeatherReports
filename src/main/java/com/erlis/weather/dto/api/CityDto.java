@@ -14,4 +14,18 @@ public class CityDto implements Serializable {
     public Integer timezone;
     public Long sunrise;
     public Long sunset;
+
+    @Override
+    public String toString() {
+        return "{\"CityDto\":{"
+                + "                        \"id\":\"" + id + "\""
+                + ",                         \"name\":\"" + name + "\""
+                + ",                         \"coord\":" + coord
+                + ",                         \"country\":\"" + country + "\""
+                + ",                         \"population\":\"" + population + "\""
+                + ",                         \"timezone\":\"" + timezone + "\""
+                + ",                         \"sunrise\":\"" + sunrise + "\""
+                + ",                         \"sunset\":\"" + sunset + "\""
+                + "}}";
+    }
 }

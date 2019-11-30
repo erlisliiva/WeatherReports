@@ -11,10 +11,9 @@ public class ApiForecastDto implements Serializable {
 
     @Override
     public String toString() {
-        return "{\"ApiForecastDto\":{" + "\n"
+        return "{" + "\n"
                 + "\"main\":" + main+ "\n"
                 + ",\"dt_txt\":\"" + dt_txt + "\""+ "\n"
-                + "}" + "\n"
                 + "}";
     }
 }
