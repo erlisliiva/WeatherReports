@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class TemperatureDto implements Serializable {
-    public Integer temp;
+    public Double temp;
     public Double temp_min;
     public Double temp_max;
     public Integer pressure;

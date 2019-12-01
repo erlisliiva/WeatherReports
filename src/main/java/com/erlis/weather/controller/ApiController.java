@@ -1,6 +1,8 @@
 package com.erlis.weather.controller;
 
 import com.erlis.weather.dto.api.ApiResultDto;
+import com.erlis.weather.dto.output.WeatherReportDto;
+import com.erlis.weather.mapper.DataMapper;
 import com.erlis.weather.service.WeatherApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +21,12 @@ public class ApiController {
     @Autowired
     private WeatherApiService weatherApiService;
 
+    @Autowired
+    private DataMapper dataMapper;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ApiResultDto> getResult() {
+    public List<WeatherReportDto> getResult() {
         try {
             return weatherApiService.writeWeatherReportToFile();
         } catch (IOException e) {

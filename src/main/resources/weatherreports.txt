@@ -1,109 +1,181 @@
 [ {
-  "cod" : "200",
-  "message" : 0,
-  "cnt" : 3,
-  "list" : [ {
-    "main" : {
-      "temp" : -1,
-      "temp_min" : -1.91,
-      "temp_max" : 0.89,
-      "pressure" : 1007,
-      "sea_level" : 1007,
-      "grnd_level" : 1004,
-      "humidity" : 58,
-      "temp_kf" : -2.8
-    },
-    "dt_txt" : "2019-11-30 18:00:00"
+  "weatherReportDetails" : {
+    "city" : "Tallinn",
+    "coordinates" : "59.4372, 59.4372",
+    "temperatureUnit" : "Celsius"
+  },
+  "currentWeatherReport" : {
+    "temperature" : 1.28,
+    "humidity" : 71,
+    "pressure" : 1006
+  },
+  "forecastReport" : [ {
+    "date" : "2019-12-02 00:00:00",
+    "weather" : {
+      "temperature" : 1.28,
+      "humidity" : 71,
+      "pressure" : 1006
+    }
   }, {
-    "main" : {
-      "temp" : -1,
-      "temp_min" : -1.77,
-      "temp_max" : 0.33,
-      "pressure" : 1008,
-      "sea_level" : 1008,
-      "grnd_level" : 1005,
-      "humidity" : 78,
-      "temp_kf" : -2.1
-    },
-    "dt_txt" : "2019-11-30 21:00:00"
+    "date" : "2019-12-02 03:00:00",
+    "weather" : {
+      "temperature" : 0.8,
+      "humidity" : 72,
+      "pressure" : 1005
+    }
   }, {
-    "main" : {
-      "temp" : 0,
-      "temp_min" : -0.84,
-      "temp_max" : 0.56,
-      "pressure" : 1010,
-      "sea_level" : 1010,
-      "grnd_level" : 1007,
-      "humidity" : 59,
-      "temp_kf" : -1.4
-    },
-    "dt_txt" : "2019-12-01 00:00:00"
-  } ],
-  "city" : {
-    "id" : 588409,
-    "name" : "Tallinn",
-    "coord" : {
-      "lon" : 24.7454,
-      "lat" : 59.4372
-    },
-    "country" : "EE",
-    "population" : 9999,
-    "timezone" : 7200,
-    "sunrise" : 1575096520,
-    "sunset" : 1575120647
-  }
-}, {
-  "cod" : "200",
-  "message" : 0,
-  "cnt" : 3,
-  "list" : [ {
-    "main" : {
-      "temp" : 0,
-      "temp_min" : -0.68,
-      "temp_max" : -0.68,
-      "pressure" : 1006,
-      "sea_level" : 1006,
-      "grnd_level" : 1001,
+    "date" : "2019-12-02 06:00:00",
+    "weather" : {
+      "temperature" : 0.92,
+      "humidity" : 69,
+      "pressure" : 1006
+    }
+  }, {
+    "date" : "2019-12-02 09:00:00",
+    "weather" : {
+      "temperature" : 1.57,
+      "humidity" : 65,
+      "pressure" : 1006
+    }
+  }, {
+    "date" : "2019-12-02 12:00:00",
+    "weather" : {
+      "temperature" : 1.83,
+      "humidity" : 65,
+      "pressure" : 1007
+    }
+  }, {
+    "date" : "2019-12-02 15:00:00",
+    "weather" : {
+      "temperature" : 0.84,
+      "humidity" : 69,
+      "pressure" : 1007
+    }
+  }, {
+    "date" : "2019-12-02 18:00:00",
+    "weather" : {
+      "temperature" : 0.75,
+      "humidity" : 69,
+      "pressure" : 1008
+    }
+  }, {
+    "date" : "2019-12-02 21:00:00",
+    "weather" : {
+      "temperature" : 0.55,
+      "humidity" : 67,
+      "pressure" : 1009
+    }
+  }, {
+    "date" : "2019-12-03 00:00:00",
+    "weather" : {
+      "temperature" : 0.84,
       "humidity" : 68,
-      "temp_kf" : 0.0
-    },
-    "dt_txt" : "2019-11-30 18:00:00"
+      "pressure" : 1010
+    }
   }, {
-    "main" : {
-      "temp" : 0,
-      "temp_min" : -0.76,
-      "temp_max" : -0.76,
-      "pressure" : 1008,
-      "sea_level" : 1008,
-      "grnd_level" : 1002,
-      "humidity" : 66,
-      "temp_kf" : 0.0
-    },
-    "dt_txt" : "2019-11-30 21:00:00"
+    "date" : "2019-12-03 03:00:00",
+    "weather" : {
+      "temperature" : 0.95,
+      "humidity" : 67,
+      "pressure" : 1010
+    }
   }, {
-    "main" : {
-      "temp" : 0,
-      "temp_min" : -0.58,
-      "temp_max" : -0.58,
-      "pressure" : 1009,
-      "sea_level" : 1009,
-      "grnd_level" : 1004,
+    "date" : "2019-12-03 06:00:00",
+    "weather" : {
+      "temperature" : 0.99,
+      "humidity" : 65,
+      "pressure" : 1011
+    }
+  }, {
+    "date" : "2019-12-03 09:00:00",
+    "weather" : {
+      "temperature" : 1.62,
+      "humidity" : 67,
+      "pressure" : 1011
+    }
+  }, {
+    "date" : "2019-12-03 12:00:00",
+    "weather" : {
+      "temperature" : 2.27,
+      "humidity" : 68,
+      "pressure" : 1011
+    }
+  }, {
+    "date" : "2019-12-03 15:00:00",
+    "weather" : {
+      "temperature" : 1.02,
+      "humidity" : 75,
+      "pressure" : 1009
+    }
+  }, {
+    "date" : "2019-12-03 18:00:00",
+    "weather" : {
+      "temperature" : 2.88,
+      "humidity" : 75,
+      "pressure" : 1007
+    }
+  }, {
+    "date" : "2019-12-03 21:00:00",
+    "weather" : {
+      "temperature" : 2.32,
       "humidity" : 79,
-      "temp_kf" : 0.0
-    },
-    "dt_txt" : "2019-12-01 00:00:00"
-  } ],
-  "city" : {
-    "id" : 589165,
-    "name" : "Rakvere",
-    "coord" : {
-      "lon" : 26.3617,
-      "lat" : 59.3482
-    },
-    "country" : "EE",
-    "population" : 16736,
-    "timezone" : 7200,
-    "sunrise" : 1575096090,
-    "sunset" : 1575120300
-  }
+      "pressure" : 1004
+    }
+  }, {
+    "date" : "2019-12-04 00:00:00",
+    "weather" : {
+      "temperature" : 4.3,
+      "humidity" : 94,
+      "pressure" : 1003
+    }
+  }, {
+    "date" : "2019-12-04 03:00:00",
+    "weather" : {
+      "temperature" : 4.73,
+      "humidity" : 94,
+      "pressure" : 1002
+    }
+  }, {
+    "date" : "2019-12-04 06:00:00",
+    "weather" : {
+      "temperature" : 5.02,
+      "humidity" : 94,
+      "pressure" : 1003
+    }
+  }, {
+    "date" : "2019-12-04 09:00:00",
+    "weather" : {
+      "temperature" : 5.51,
+      "humidity" : 93,
+      "pressure" : 1005
+    }
+  }, {
+    "date" : "2019-12-04 12:00:00",
+    "weather" : {
+      "temperature" : 6.18,
+      "humidity" : 87,
+      "pressure" : 1007
+    }
+  }, {
+    "date" : "2019-12-04 15:00:00",
+    "weather" : {
+      "temperature" : 5.41,
+      "humidity" : 86,
+      "pressure" : 1008
+    }
+  }, {
+    "date" : "2019-12-04 18:00:00",
+    "weather" : {
+      "temperature" : 5.45,
+      "humidity" : 87,
+      "pressure" : 1010
+    }
+  }, {
+    "date" : "2019-12-04 21:00:00",
+    "weather" : {
+      "temperature" : 4.3,
+      "humidity" : 89,
+      "pressure" : 1009
+    }
+  } ]
 } ]

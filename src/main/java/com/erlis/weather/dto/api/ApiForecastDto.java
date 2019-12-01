@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class ApiForecastDto implements Serializable {
+
     public TemperatureDto main;
     public String dt_txt;
 

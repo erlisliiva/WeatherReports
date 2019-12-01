@@ -1,6 +1,7 @@
 package com.erlis.weather.service;
 
 import com.erlis.weather.dto.api.ApiResultDto;
+import com.erlis.weather.dto.output.WeatherReportDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +27,7 @@ public class FileService implements Serializable {
         return Files.readAllLines(file.toPath(), Charset.defaultCharset());
     }
 
-    public void writeToFile(List<ApiResultDto> weatherReportDtoList, String fileName) {
+    public void writeToFile(List<WeatherReportDto> weatherReportDtoList, String fileName) {
 
         try (FileWriter writer = new FileWriter(resourcePath + fileName);
              BufferedWriter bw = new BufferedWriter(writer)) {

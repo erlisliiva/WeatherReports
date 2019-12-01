@@ -24,7 +24,7 @@ public class RestClient {
         return client
                 .target(REST_URI)
                 .queryParam("q", cityName)
-                .queryParam("cnt", 3)
+                .queryParam("cnt", 24)
                 .queryParam("appid", appid)
                 .queryParam("units", METRIC)
                 .request(MediaType.APPLICATION_JSON)
