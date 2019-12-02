@@ -1,8 +1,6 @@
 package com.erlis.weather.service;
 
 import com.erlis.weather.client.RestClient;
-import com.erlis.weather.dto.api.ApiResultDto;
-import com.erlis.weather.dto.output.WeatherReportDetailsDto;
 import com.erlis.weather.dto.output.WeatherReportDto;
 import com.erlis.weather.mapper.DataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,6 @@ public class WeatherApiService {
         List<String> cities = fileService.readFromFile("citynames.txt");
 
 
-
         List<WeatherReportDto> weatherReportDtos = cities.stream()
                 .map(city -> restClient.getWeatherReportByCity(city))
                 .map(apiResultDto -> new DataMapper().map(apiResultDto))
@@ -40,4 +37,18 @@ public class WeatherApiService {
 
         return weatherReportDtos;
     }
+
+    public List<WeatherReportDto> writeWeatherReportToFileSpecificCity(String cityName) {
+        List<String> list = new LinkedList<>();
+        list.add(cityName);
+
+        List<WeatherReportDto> weatherReportDtos = list.stream()
+                .map(item -> restClient.getWeatherReportByCity(item))
+                .map(weather -> new DataMapper().map(weather)).collect(Collectors.toList());
+
+        fileService.writeToFile(weatherReportDtos, "weatherreports.txt");
+
+        return weatherReportDtos;
+    }
+
 }

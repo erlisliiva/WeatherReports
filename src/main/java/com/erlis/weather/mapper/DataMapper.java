@@ -1,16 +1,21 @@
 package com.erlis.weather.mapper;
 
+import com.erlis.weather.client.RestClient;
 import com.erlis.weather.dto.api.ApiForecastDto;
 import com.erlis.weather.dto.api.ApiResultDto;
 import com.erlis.weather.dto.output.ForecastDto;
 import com.erlis.weather.dto.output.WeatherDto;
 import com.erlis.weather.dto.output.WeatherReportDetailsDto;
 import com.erlis.weather.dto.output.WeatherReportDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DataMapper {
 
+
+    @Autowired
+    private RestClient restClient;
 
     /** Manual Mapping for ApiDto to OutPutDto
      * @param weather APiDto
@@ -22,6 +27,7 @@ public class DataMapper {
         WeatherReportDetailsDto detailsDto = new WeatherReportDetailsDto();
         WeatherDto weatherDtoCurrent = new WeatherDto();
 
+        weatherReportDto.setCod(weather.cod);
         weatherDtoCurrent.setHumidity(weather.getList().get(0).main.getHumidity());
         weatherDtoCurrent.setPressure(weather.getList().get(0).main.getPressure());
         weatherDtoCurrent.setTemperature(weather.getList().get(0).main.getTemp());
@@ -31,6 +37,7 @@ public class DataMapper {
 
         weatherReportDto.weatherReportDetails.setCity(weather.city.name);
         weatherReportDto.weatherReportDetails.setCoordinates(weather.city.coord.lat.toString() + ", " + weather.city.coord.lat.toString());
+
         weatherReportDto.weatherReportDetails.setTemperatureUnit("Celsius");
 
         for (ApiForecastDto fc : weather.getList()) {

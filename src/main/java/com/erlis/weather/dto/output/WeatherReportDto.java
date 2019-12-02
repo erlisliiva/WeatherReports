@@ -9,6 +9,7 @@ import java.util.Objects;
 @Data
 public class WeatherReportDto {
 
+    private String cod;
     public WeatherReportDetailsDto weatherReportDetails;
     public WeatherDto currentWeatherReport;
     public List<ForecastDto> forecastReport;
