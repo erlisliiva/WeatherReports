@@ -26,8 +26,7 @@ public class ApiResultDto implements Serializable {
     @Override
     public String toString() {
         return "{" + "\n"
-                + "\"cod\":\"" + cod + "\"" + "\n"
-                + ",\"message\":\"" + message + "\"" + "\n"
+                + "\"message\":\"" + message + "\"" + "\n"
                 + ",\"cnt\":\"" + cnt + "\"" + "\n"
                 + ",\"list\":" + list + "\n"
                 + ",\"city\":" + city + "\n"

@@ -1,8 +1,5 @@
 package com.erlis.weather.service;
 
-import com.erlis.weather.dto.output.ForecastDto;
-import com.erlis.weather.dto.output.WeatherDto;
-import com.erlis.weather.dto.output.WeatherReportDetailsDto;
 import com.erlis.weather.dto.output.WeatherReportDto;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,8 +13,8 @@ import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static com.erlis.weather.service.TestData.getMockObjectOutput;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class FileServiceTest {
 
@@ -29,8 +26,15 @@ public class FileServiceTest {
     private static final String TEST_FILE_PATH = "C:\\Users\\Erlis\\IdeaProjects\\WeatherReports\\src\\test\\resources\\";
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws NoSuchFieldException, IllegalAccessException {
         fileService = new FileService();
+        setPrivateFields();
+    }
+
+
+    @Test
+    void shouldThrowExceptionWhenFileIsEmpty() {
+        assertThrows(IOException.class, () -> fileService.readFromFile(null));
     }
 
     @Test
@@ -45,22 +49,23 @@ public class FileServiceTest {
     }
 
     @Test
-    void testIfWriteToFileIsWriting() throws IllegalAccessException, InstantiationException, NoSuchFieldException, ClassNotFoundException {
+    void testIfWriteToFileIsWriting() {
 
         List<WeatherReportDto> weatherReportDtos = new LinkedList<>();
-        weatherReportDtos.add(getTestObject());
-        getObjectMapper();
-
+        weatherReportDtos.add(getMockObjectOutput());
         fileService.writeToFile(weatherReportDtos, fileNameToWrite);
-
 
     }
 
-    private void getObjectMapper() throws NoSuchFieldException, IllegalAccessException {
+    private void setPrivateFields() throws NoSuchFieldException, IllegalAccessException {
 
-        Field declaredField = FileService.class.getDeclaredField("objectMapper");
-        declaredField.setAccessible(true);
-        declaredField.set(fileService, objectMapper());
+        Field objectMapper = FileService.class.getDeclaredField("objectMapper");
+        objectMapper.setAccessible(true);
+        objectMapper.set(fileService, objectMapper());
+
+        Field resourcePath = FileService.class.getDeclaredField("resourcePath");
+        resourcePath.setAccessible(true);
+        resourcePath.set(fileService, TEST_FILE_PATH);
     }
 
     private ObjectMapper objectMapper() {
@@ -70,18 +75,4 @@ public class FileServiceTest {
                 .build();
     }
 
-    private WeatherReportDto getTestObject() {
-
-        WeatherReportDto weatherReportDto = new WeatherReportDto();
-        WeatherDto weatherDto = new WeatherDto();
-        WeatherReportDetailsDto weatherReportDetailsDto = new WeatherReportDetailsDto();
-        ForecastDto forecastDto = new ForecastDto();
-        weatherReportDto.setCurrentWeatherReport(weatherDto);
-        weatherReportDto.currentWeatherReport.setTemperature(-5.0);
-        weatherReportDto.currentWeatherReport.setHumidity(5000);
-        weatherReportDto.setWeatherReportDetails(weatherReportDetailsDto);
-        weatherReportDto.weatherReportDetails.setCity("Tallinn");
-
-        return weatherReportDto;
-    }
 }

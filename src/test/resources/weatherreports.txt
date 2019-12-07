@@ -1,0 +1,20 @@
+[ {
+  "weatherReportDetails" : {
+    "city" : "Tallinn",
+    "coordinates" : "50.99, 50.99",
+    "temperatureUnit" : "Celsius"
+  },
+  "currentWeatherReport" : {
+    "temperature" : 5.0,
+    "humidity" : 1000,
+    "pressure" : 77
+  },
+  "forecastReport" : [ {
+    "date" : "2019-12-03 00:00:00",
+    "weather" : {
+      "temperature" : 5.0,
+      "humidity" : 1000,
+      "pressure" : 77
+    }
+  } ]
+} ]

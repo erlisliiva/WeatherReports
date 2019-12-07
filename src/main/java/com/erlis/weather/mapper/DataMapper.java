@@ -7,15 +7,14 @@ import com.erlis.weather.dto.output.ForecastDto;
 import com.erlis.weather.dto.output.WeatherDto;
 import com.erlis.weather.dto.output.WeatherReportDetailsDto;
 import com.erlis.weather.dto.output.WeatherReportDto;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Log4j
+
 @Service
 public class DataMapper {
-
-
-    @Autowired
-    private RestClient restClient;
 
     /** Manual Mapping for ApiDto to OutPutDto
      * @param weather APiDto
@@ -27,7 +26,6 @@ public class DataMapper {
         WeatherReportDetailsDto detailsDto = new WeatherReportDetailsDto();
         WeatherDto weatherDtoCurrent = new WeatherDto();
 
-        weatherReportDto.setCod(weather.cod);
         weatherDtoCurrent.setHumidity(weather.getList().get(0).main.getHumidity());
         weatherDtoCurrent.setPressure(weather.getList().get(0).main.getPressure());
         weatherDtoCurrent.setTemperature(weather.getList().get(0).main.getTemp());

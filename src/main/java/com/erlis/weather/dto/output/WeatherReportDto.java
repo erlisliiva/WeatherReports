@@ -1,5 +1,6 @@
 package com.erlis.weather.dto.output;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.util.LinkedList;
@@ -9,7 +10,6 @@ import java.util.Objects;
 @Data
 public class WeatherReportDto {
 
-    private String cod;
     public WeatherReportDetailsDto weatherReportDetails;
     public WeatherDto currentWeatherReport;
     public List<ForecastDto> forecastReport;

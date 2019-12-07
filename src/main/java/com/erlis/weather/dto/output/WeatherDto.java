@@ -8,12 +8,12 @@ public class WeatherDto {
     public int humidity;
     public int pressure;
 
-//    @Override
-//    public String toString() {
-//        return "{"
-//                + "\"temperature\":\"" + temperature + "\""
-//                + ",\"humidity\":\"" + humidity + "\""
-//                + ",\"pressure\":\"" + pressure + "\""
-//                + "}";
-//    }
+    @Override
+    public String toString() {
+        return "{"
+                + "\"temperature\":\"" + temperature + "\""
+                + ",\"humidity\":\"" + humidity + "\""
+                + ",\"pressure\":\"" + pressure + "\""
+                + "}";
+    }
 }

@@ -3,6 +3,7 @@ package com.erlis.weather.service;
 import com.erlis.weather.dto.api.ApiResultDto;
 import com.erlis.weather.dto.output.WeatherReportDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,11 @@ public class FileService implements Serializable {
     private String resourcePath;
 
     public List<String> readFromFile(String fileName) throws IOException {
+
         File file = ResourceUtils.getFile(resourcePath + fileName);
+        if (file.length() == 0 || fileName.isEmpty()){
+            throw new IOException("File is empty of city names!");
+        }
         return Files.readAllLines(file.toPath(), Charset.defaultCharset());
     }
 
@@ -37,6 +42,7 @@ public class FileService implements Serializable {
             System.err.format("IOException: %s%n", e);
         }
     }
+
 
 
 }
